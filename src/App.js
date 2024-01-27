@@ -24,7 +24,7 @@ function Home() {
     const userId = 'user_' + new Date().getTime();
     const newUser = { id: userId, name: name };
 
-    fetch('http://'+url+'/add-user', {
+    fetch('https://'+url+'/add-user', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -64,7 +64,7 @@ function App() {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    fetch('http://'+url+'/get-users')
+    fetch('https://'+url+'/get-users')
       .then(response => response.json())
       .then(data => setUsers(data))
       .catch(error => console.error('Error:', error));
