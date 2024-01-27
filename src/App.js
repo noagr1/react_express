@@ -11,6 +11,9 @@ function UserProfile() {
   return <h2>פרופיל משתמש: {user ? user.name : 'לא נמצא'}</h2>;
 }
 
+//url = "localhost:5000"
+const url = "noaexpressreact.onrender.com"
+
 function Home() {
   const [name, setName] = useState('');
   const navigate = useNavigate();
@@ -21,7 +24,7 @@ function Home() {
     const userId = 'user_' + new Date().getTime();
     const newUser = { id: userId, name: name };
 
-    fetch('http://localhost:5000/add-user', {
+    fetch('http://'+url+'/add-user', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -61,7 +64,7 @@ function App() {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:5000/get-users')
+    fetch('http://'+url+'/get-users')
       .then(response => response.json())
       .then(data => setUsers(data))
       .catch(error => console.error('Error:', error));
